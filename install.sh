@@ -1,10 +1,17 @@
 #!/bin/bash
 
+if [ "$EUID" -ne 0 ]
+  then echo "Run this script using 'sudo'"
+  exit
+fi
+
 # Set envvar for dotfiles dir
 export DOTFILES=$HOME/projests/dotfiles
 
 # Symlink dotfiles
 . "$DOTFILES/install/symlink.sh"
 
-# Package managers and packages
+# Packages
+. "$DOTFILES/install/docker.sh"
+. "$DOTFILES/install/packages.sh"
 . "$DOTFILES/install/zsh.sh"
