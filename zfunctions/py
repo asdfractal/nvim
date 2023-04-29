@@ -1,0 +1,6 @@
+# Create new directories and enter the first one.
+py() {
+    if [ -n "$*" ]; then
+        python"$@"
+    fi
+}

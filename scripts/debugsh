@@ -1,0 +1,9 @@
+#!/bin/bash -x
+green='tput setaf 2'
+reset='tput sgr0'
+PS4='$($green)Line: $LINENO -> $($reset)'
+# set -x
+a=10
+b=15
+echo "a = $a"
+echo "b = $b"

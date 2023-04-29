@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+d=$(date +%Y%m%d)
+filename=ubuntu-backup-$d.tar
+echo $filename
+echo $d

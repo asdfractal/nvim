@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+IFS=,
+read -p "Serial number (i.e., 12-2222): " seg1 seg2
+echo "Segment 1: $seg1"
+echo "Segment 2: $seg2"
+
+
+# CSV PARSER
+# CSV_FILE="product_list.csv"
+# IFS=,
+# while read -r fruit price
+# do
+#     printf "%-12s: \$%.2f\n" "$fruit" "$price"
+# done < <(tail +2 $CSV_FILE)
