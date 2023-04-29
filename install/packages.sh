@@ -7,12 +7,9 @@ packages=(
   zsh
   etckeeper
   git
-  nvm
   neovim
   nano
   tmux
-  docker
-  docker-compose
 )
 
 echo "Installing ${packages[@]}"

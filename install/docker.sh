@@ -14,7 +14,7 @@ echo \
 
 # Install Docker Engine
 apt update
-apt install -y docker-ce docker-ce-cli containerd.io
+apt install -y docker docker-ce docker-ce-cli containerd.io
 apt install -y docker-compose docker-compose-plugin
 
 # Add user to docker group
