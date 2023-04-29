@@ -9,3 +9,5 @@ ln -snf $DOTFILES/zfunctions/* $HOMEDIR/.zfunctions
 ln -sf $DOTFILES/.p10k.zsh $HOMEDIR/.p10k.zsh
 ln -sf $DOTFILES/.zshrc $HOMEDIR/.zshrc
 ln -sf $DOTFILES/.aliases $HOMEDIR/.aliases
+
+ln -sf /mnt/c/Users/james/.aws ~/
