@@ -24,4 +24,3 @@ if [ ! -n "$(getent group | grep "docker")" ]; then
   groupadd docker
 fi
 usermod -aG docker $HOMEUSER
-newgrp docker
