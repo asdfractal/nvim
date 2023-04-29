@@ -1,8 +1,6 @@
 apt update
 apt upgrade -y
 
-HOMEUSER=asdfractal
-
 # Install prerequisites
 apt install -y apt-transport-https ca-certificates curl gnupg lsb-release
 

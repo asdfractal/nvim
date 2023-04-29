@@ -5,8 +5,10 @@ if [ "$EUID" -ne 0 ]
   exit
 fi
 
-# Set envvar for dotfiles dir
-export DOTFILES=$HOME/projects/dotfiles
+# Set env var due to sudo
+export HOMEDIR=/home/asdfractal
+export HOMEUSER=asdfractal
+export DOTFILES=$HOMEDIR/projects/dotfiles
 echo $DOTFILES
 
 # Symlink dotfiles
