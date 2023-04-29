@@ -6,6 +6,6 @@ rm -rf $HOME/.zfunctions
 mkdir -p $HOME/.zfunctions
 ln -snf $DOTFILES/zfunctions/* $HOME/.zfunctions
 
-ls -sf $DOTFILES/.p10k.zsh $HOME/.p10k.zsh
+ln -sf $DOTFILES/.p10k.zsh $HOME/.p10k.zsh
 ln -sf $DOTFILES/.zshrc $HOME/.zshrc
 ln -sf $DOTFILES/.aliases $HOME/.aliases
