@@ -10,6 +10,12 @@ packages=(
   neovim
   nano
   tmux
+  python3-pip
+  awscli
+  postgresql
+  postgresql-client
+  restic
+  unzip
 )
 
 echo ">> Installing ${packages[@]}"
