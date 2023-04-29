@@ -6,7 +6,7 @@ if [ "$EUID" -ne 0 ]
 fi
 
 # Set envvar for dotfiles dir
-export DOTFILES=$HOME/projests/dotfiles
+export DOTFILES=$HOME/projects/dotfiles
 
 # Symlink dotfiles
 . "$DOTFILES/install/symlink.sh"
