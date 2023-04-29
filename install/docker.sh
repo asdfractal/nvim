@@ -18,6 +18,8 @@ apt install -y docker-ce docker-ce-cli containerd.io
 apt install -y docker-compose docker-compose-plugin
 
 # Add user to docker group
-groupadd docker
+if [ ! -n "$(getent group | grep "docker")" ]; then
+  groupadd docker
+fi
 usermod -aG docker $USER
 newgrp docker
