@@ -15,4 +15,5 @@ packages=(
   docker-compose
 )
 
+echo "Installing ${packages[@]}"
 apt install -y "${packages[@]}"
