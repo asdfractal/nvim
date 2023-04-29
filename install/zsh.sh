@@ -1,5 +1,5 @@
 # omz
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+sudo -u $SUDO_USER sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
 # Install zsh plugins
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git $HOMEDIR/.oh-my-zsh/custom/themes/powerlevel10k
