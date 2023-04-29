@@ -1,6 +1,8 @@
 apt update
 apt upgrade -y
 
+HOMEUSER = "asdfractal"
+
 # Install prerequisites
 apt install -y apt-transport-https ca-certificates curl gnupg lsb-release
 
@@ -21,5 +23,5 @@ apt install -y docker-compose docker-compose-plugin
 if [ ! -n "$(getent group | grep "docker")" ]; then
   groupadd docker
 fi
-usermod -aG docker $USER
+usermod -aG docker $HOMEUSER
 newgrp docker
