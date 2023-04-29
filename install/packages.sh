@@ -12,5 +12,5 @@ packages=(
   tmux
 )
 
-echo "Installing ${packages[@]}"
+echo ">> Installing ${packages[@]}"
 apt install -y "${packages[@]}"

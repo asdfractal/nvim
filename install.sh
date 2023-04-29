@@ -6,19 +6,17 @@ if [ "$EUID" -ne 0 ]
 fi
 
 # Set env var due to sudo
-export HOMEDIR=/home/asdfractal
-export HOMEUSER=asdfractal
+export HOMEDIR=/home/$SUDO_USER
 export DOTFILES=$HOMEDIR/projects/dotfiles
-echo $DOTFILES
-
-# Symlink dotfiles
-echo "Symlinking dotfiles..."
-. "$DOTFILES/install/symlink.sh"
 
 # Packages
-echo "Installing docker..."
+echo ">> Installing docker..."
 . "$DOTFILES/install/docker.sh"
 . "$DOTFILES/install/packages.sh"
-echo "Installing zsh..."
+echo ">> Installing zsh..."
 . "$DOTFILES/install/zsh.sh"
-echo "Install complete - restart shell"
+
+# Symlink dotfiles
+echo ">> Symlinking dotfiles..."
+. "$DOTFILES/install/symlink.sh"
+echo ">> Install complete - restart shell"
