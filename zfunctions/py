@@ -1,4 +1,4 @@
-# Create new directories and enter the first one.
+# specific python version
 py() {
     if [ -n "$*" ]; then
         python"$@"
