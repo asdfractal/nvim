@@ -49,6 +49,8 @@ source $ZSH/oh-my-zsh.sh
 # Exports
 export GPG_TTY=$TTY
 export DOTFILES="$HOME/projects/dotfiles"
+export FLYCTL_INSTALL="$HOME/.fly"
+export PATH=$PATH:"$FLYCTL_INSTALL/bin"
 
 # Aliases
 source ~/.aliases

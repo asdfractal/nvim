@@ -1,13 +1,22 @@
-rm -rf $HOMEDIR/.local/bin
-mkdir -p $HOMEDIR/.local/bin
-ln -snf $DOTFILES/scripts/* $HOMEDIR/.local/bin
+rm -rf $HOME/.config/nvim
+mkdir -p $HOME/.config/nvim
+ln -snf $DOTFILES/nvim/* $HOME/.config/nvim
 
-rm -rf $HOMEDIR/.zfunctions
-mkdir -p $HOMEDIR/.zfunctions
-ln -snf $DOTFILES/zfunctions/* $HOMEDIR/.zfunctions
+rm -rf $HOME/.local/bin
+mkdir -p $HOME/.local/bin
+ln -snf $DOTFILES/scripts/* $HOME/.local/bin
 
-ln -sf $DOTFILES/.p10k.zsh $HOMEDIR/.p10k.zsh
-ln -sf $DOTFILES/.zshrc $HOMEDIR/.zshrc
-ln -sf $DOTFILES/.aliases $HOMEDIR/.aliases
+rm -rf $HOME/.zfunctions
+mkdir -p $HOME/.zfunctions
+ln -snf $DOTFILES/zfunctions/* $HOME/.zfunctions
+
+ln -snf $DOTFILES/tmux/* $HOME
+
+ln -sf $DOTFILES/.p10k.zsh $HOME/.p10k.zsh
+ln -sf $DOTFILES/.zshrc $HOME/.zshrc
+ln -sf $DOTFILES/.aliases $HOME/.aliases
+ln -sf $DOTFILES/tmux/.tmux.conf $HOME/.tmux.conf
+ln -sf $DOTFILES/tmux/.tmux-cht-languages $HOME/.tmux-cht-languages
+ln -sf $DOTFILES/tmux/.tmux-cht-command $HOME/.tmux-cht-command
 
 ln -sf /mnt/c/Users/james/.aws ~/
