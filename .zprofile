@@ -2,7 +2,7 @@ VIM="nvim"
 export GIT_EDITOR=$VIM
 export DOTFILES=$HOME/.dotfiles
 
-bindkey -s ^f "tmux-sessionizer\n"
+bindkey -s ^f "tmux-sessioniser\n"
 
 source ~/.env
 

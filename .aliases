@@ -8,11 +8,11 @@ alias -- -="cd -"
 
 # Shortcuts
 alias p="cd ~/projects"
+alias df="cd $DOTFILES"
 
 alias zshconf="nvim $DOTFILES/.zshrc"
 alias aliases="nvim $DOTFILES/.aliases"
 alias gconf="nvim ~/.gitconfig"
-alias df="cd $DOTFILES"
 alias nv="nvim"
 
 # Git
@@ -23,7 +23,7 @@ alias gc="git commit -v"
 alias gd="git diff"
 alias gds="git diff --staged"
 alias gf="git fetch"
-alias glg"git log --oneline"
+alias glo"git log --oneline"
 alias glgg="git log --graph"
 alias glgga="git log --graph --decorate --all"
 alias glgm="git log --graph --max-count=10"
