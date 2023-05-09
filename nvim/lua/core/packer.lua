@@ -13,22 +13,8 @@ return require('packer').startup(function(use)
         requires = { { 'nvim-lua/plenary.nvim' } }
     }
 
-    -- use({
-    --     'adrian5/oceanic-next-vim',
-    --     as = 'oceanic-next',
-    --     config = function()
-    --         vim.cmd('colorscheme oceanic-next')
-    --     end
-    -- })
-    -- vim.cmd('colorscheme OceanicNext')
-    -- use({
-    --     'rose-pine/neovim',
-    --     as = 'rose-pine',
-    --     config = function()
-    --         vim.cmd('colorscheme rose-pine')
-    --     end
-    -- })
     use({
+        -- https://github.com/adrian5/oceanic-next-vim
         '/home/asdfractal/.local/share/nvim/site/pack/plugins/start/oceanic-next-vim',
         as = 'oceanicnext',
         config = function()
@@ -45,12 +31,9 @@ return require('packer').startup(function(use)
     use('eandrju/cellular-automaton.nvim')
     use('nvim-tree/nvim-tree.lua')
     use('nvim-tree/nvim-web-devicons')
-    use {
-        'numToStr/Comment.nvim',
-        config = function()
-            require('Comment').setup()
-        end
-    }
+    use('tpope/vim-surround')
+    use { 'ellisonleao/glow.nvim', config = function() require("glow").setup() end }
+    use { 'numToStr/Comment.nvim', config = function() require('Comment').setup() end }
     use {
         'VonHeikemen/lsp-zero.nvim',
         branch = 'v2.x',
