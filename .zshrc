@@ -25,18 +25,6 @@ if [ $OSTYPE = "linux-gnu" ]; then
   )
 fi
 
-# Windows
-if [ $OSTYPE = "msys" ]; then
-	plugins=(
-    zsh-history-substring-search
-    z
-    zsh-syntax-highlighting
-    git
-    docker
-    docker-compose
-  )
-fi
-
 # Path
 export PATH=$PATH:"$HOME/.local/bin"
 fpath=($fpath "$HOME/.zfunctions")
@@ -54,6 +42,10 @@ export PATH=$PATH:"$FLYCTL_INSTALL/bin"
 
 # Aliases
 source ~/.aliases
+
+if [ -f ~/.work-aliases ]; then
+	source ~/.work-aliases
+fi
 
 # zsh-autosuggestions
 source $ZSH_CUSTOM_PLUGIN/zsh-autosuggestions/zsh-autosuggestions.zsh

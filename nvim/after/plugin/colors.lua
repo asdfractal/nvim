@@ -1,7 +1,3 @@
--- require('/home/asdfractal/.local/share/nvim/site/pack/plugins/start/oceanic-next-vim/colors/oceanicnext.vim').setup({
---     disable_background = true
--- })
-
 function ColorMyPencils(color)
     color = color or "oceanicnext"
     vim.cmd.colorscheme(color)

@@ -10,10 +10,9 @@ rm -rf $HOME/.zfunctions
 mkdir -p $HOME/.zfunctions
 ln -snf $DOTFILES/zfunctions/* $HOME/.zfunctions
 
-ln -snf $DOTFILES/tmux/* $HOME
-
 ln -sf $DOTFILES/.p10k.zsh $HOME/.p10k.zsh
 ln -sf $DOTFILES/.zshrc $HOME/.zshrc
+ln -sf $DOTFILES/.zprofile $HOME/.zprofile
 ln -sf $DOTFILES/.aliases $HOME/.aliases
 ln -sf $DOTFILES/tmux/.tmux.conf $HOME/.tmux.conf
 ln -sf $DOTFILES/tmux/.tmux-cht-languages $HOME/.tmux-cht-languages

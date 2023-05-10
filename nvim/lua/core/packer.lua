@@ -2,7 +2,6 @@
 
 -- Only required if you have packer configured as `opt`
 vim.cmd [[packadd packer.nvim]]
-
 return require('packer').startup(function(use)
     -- Packer can manage itself
     use 'wbthomason/packer.nvim'
@@ -16,7 +15,7 @@ return require('packer').startup(function(use)
 
     use({
         -- https://github.com/adrian5/oceanic-next-vim
-        '/home/asdfractal/.local/share/nvim/site/pack/plugins/start/oceanic-next-vim',
+        os.getenv("HOME")..'/.local/share/nvim/site/pack/plugins/start/oceanic-next-vim',
         as = 'oceanicnext',
         config = function()
             vim.cmd('let g:oceanic_transparent_bg = 0')
