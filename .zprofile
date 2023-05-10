@@ -4,7 +4,9 @@ export DOTFILES=$HOME/.dotfiles
 
 bindkey -s ^f "tmux-sessioniser\n"
 
-source ~/.env
+if [ -f ~/.env ]; then
+   source ~/.env
+fi
 
 if [ -z "$SSH_AUTH_SOCK" ]; then
    # Check for a currently running instance of the agent
@@ -13,5 +15,5 @@ if [ -z "$SSH_AUTH_SOCK" ]; then
         # Launch a new instance of the agent
         ssh-agent -s &> $HOME/.ssh/ssh-agent
    fi
-   eval `cat $HOME/.ssh/ssh-agent`
+   eval `ssh-agent -s`
 fi
