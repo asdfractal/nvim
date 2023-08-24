@@ -6,9 +6,6 @@ packages=(
   ripgrep
   zsh
   etckeeper
-  git
-  neovim
-  nano
   tmux
   python3-pip
   awscli
@@ -16,6 +13,8 @@ packages=(
   postgresql-client
   restic
   unzip
+  nodejs
+  npm
 )
 
 echo ">> Installing ${packages[@]}"

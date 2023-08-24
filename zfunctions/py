@@ -2,5 +2,7 @@
 py() {
     if [ -n "$*" ]; then
         python"$@"
+    else
+        python3.11
     fi
 }
