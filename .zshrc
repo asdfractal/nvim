@@ -27,7 +27,7 @@ if [ $OSTYPE = "linux-gnu" ]; then
 fi
 
 # Path
-export PATH="$HOME/.local/bin":$PATH
+export PATH="$HOME/.local/bin":"/usr/local/go/bin":$PATH
 fpath=($fpath "$HOME/.zfunctions")
 
 autoload -Uz compinit && compinit
