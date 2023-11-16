@@ -1,6 +1,9 @@
 require("harpoon").setup({
     tabline = true,
+    tabline_prefix = "-- ",
+    tabline_suffix = " ",
 })
+require("telescope").load_extension('harpoon')
 
 local mark = require("harpoon.mark")
 local ui = require("harpoon.ui")

@@ -8,7 +8,7 @@ alias -- -="cd -"
 
 # Shortcuts
 alias p="cd ~/projects"
-alias pg="cd ~/go/src/github.com/asdfractal"
+alias pg="cd $GOPATH/src/github.com/asdfractal"
 alias dot="cd $DOTFILES"
 alias dl="cd ~/Downloads"
 

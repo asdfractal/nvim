@@ -2,24 +2,40 @@ local lsp = require('lsp-zero')
 
 lsp.preset('recommended')
 
-lsp.ensure_installed({
-    'tsserver',
-    'rust_analyzer',
-    'pyright',
+require('mason').setup({})
+require('mason-lspconfig').setup({
+    ensure_installed = { 'tsserver', 'rust_analyzer', 'pyright', },
+    handlers = {
+        lsp.default_setup,
+    },
 })
-
 local cmp = require('cmp')
+local cmp_action = require('lsp-zero').cmp_action()
 local cmp_select = { behavior = cmp.SelectBehavior.Select }
-local cmp_mappings = lsp.defaults.cmp_mappings({
-    ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
-    ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
-    ['<Tab>'] = cmp.mapping.confirm({ select = true }),
-    ['<C-Space>'] = cmp.mapping.complete(),
+
+cmp.setup({
+    window = {
+        completion = cmp.config.window.bordered(),
+        documentation = cmp.config.window.bordered(),
+    },
+    mapping = cmp.mapping.preset.insert({
+        ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
+        ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
+        ['<Tab>'] = cmp.mapping.confirm({ select = true }),
+        ['<C-Space>'] = cmp.mapping.complete(),
+        ['<C-f>'] = cmp_action.luasnip_jump_forward(),
+        ['<C-b>'] = cmp_action.luasnip_jump_backward(),
+        ['<C-u>'] = cmp.mapping.scroll_docs(-4),
+        ['<C-d>'] = cmp.mapping.scroll_docs(4),
+    }),
+    sources = {
+        { name = 'nvim_lsp' },
+    }
 })
 
-lsp.setup_nvim_cmp({
-    mapping = cmp_mappings
-})
+-- lsp.setup_nvim_cmp({
+--     mapping = cmp_mappings
+-- })
 
 lsp.set_preferences({
     suggest_lsp_servers = false,

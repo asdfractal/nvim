@@ -26,20 +26,20 @@ if [ $OSTYPE = "linux-gnu" ]; then
   )
 fi
 
+# Exports
+export GPG_TTY=$TTY
+export DOTFILES="$HOME/projects/dotfiles"
+export FLYCTL_INSTALL="$HOME/.fly"
+export GOPATH="$HOME/projects/go"
+
 # Path
-export PATH="$HOME/.local/bin":"/usr/local/go/bin":$PATH
+export PATH="$HOME/.local/bin":"/usr/local/go/bin":"$HOME/projects/go/bin":"$FLYCTL_INSTALL/bin":$PATH
 fpath=($fpath "$HOME/.zfunctions")
 
 autoload -Uz compinit && compinit
 autoload -Uz mkd py
 
 source $ZSH/oh-my-zsh.sh
-
-# Exports
-export GPG_TTY=$TTY
-export DOTFILES="$HOME/projects/dotfiles"
-export FLYCTL_INSTALL="$HOME/.fly"
-export PATH=$PATH:"$FLYCTL_INSTALL/bin"
 
 # Aliases
 source ~/.aliases
