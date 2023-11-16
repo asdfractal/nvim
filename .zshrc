@@ -31,6 +31,7 @@ export GPG_TTY=$TTY
 export DOTFILES="$HOME/projects/dotfiles"
 export FLYCTL_INSTALL="$HOME/.fly"
 export GOPATH="$HOME/projects/go"
+export BROWSER=wslview
 
 # Path
 export PATH="$HOME/.local/bin":"/usr/local/go/bin":"$HOME/projects/go/bin":"$FLYCTL_INSTALL/bin":$PATH
