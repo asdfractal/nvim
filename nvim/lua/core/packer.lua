@@ -59,6 +59,7 @@ return require('packer').startup(function(use)
         }
     }
     use 'ray-x/go.nvim'
+    use { 'codota/tabnine-nvim', run = "./dl_binaries.sh" }
     --
 
     use('ojroques/nvim-hardline')
