@@ -13,10 +13,10 @@ wilder.set_option('pipeline', {
     ),
 })
 
-local highlighters = {
-    wilder.pcre2_highlighter(),
-    wilder.basic_highlighter(),
-}
+-- local highlighters = {
+--     wilder.pcre2_highlighter(),
+--     wilder.basic_highlighter(),
+-- }
 
 -- wilder.set_option('renderer', wilder.renderer_mux({
 --     [':'] = wilder.popupmenu_renderer({

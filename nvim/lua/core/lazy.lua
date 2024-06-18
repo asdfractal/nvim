@@ -13,6 +13,7 @@ vim.opt.rtp:prepend(lazypath)
 
 require('lazy').setup({
     -- Find things
+    'junegunn/fzf.vim',
     {
         'nvim-telescope/telescope.nvim',
         branch = '0.1.x',
@@ -44,30 +45,33 @@ require('lazy').setup({
         branch = "harpoon2",
         dependencies = { "nvim-lua/plenary.nvim" },
     },
+    {
+        "nvim-pack/nvim-spectre",
+    },
 
     -- LSP/Language
     'nvimtools/none-ls.nvim',
-	{
-		"williamboman/mason.nvim", build = ':MasonUpdate',
-	},
+    {
+        "williamboman/mason.nvim", build = ':MasonUpdate',
+    },
     {
         'VonHeikemen/lsp-zero.nvim',
         branch = 'v3.x',
         dependencies = {
             -- LSP Support
-            { 'neovim/nvim-lspconfig' }, -- Required
-           { 'williamboman/mason-lspconfig.nvim' }, -- Optional
+            { 'neovim/nvim-lspconfig' },             -- Required
+            { 'williamboman/mason-lspconfig.nvim' }, -- Optional
 
-		   -- Autocompletion
-		   { 'hrsh7th/nvim-cmp' },     -- Required
-		   { 'hrsh7th/cmp-nvim-lsp' }, -- Required
-		   { 'L3MON4D3/LuaSnip' },     -- Required
+            -- Autocompletion
+            { 'hrsh7th/nvim-cmp' },     -- Required
+            { 'hrsh7th/cmp-nvim-lsp' }, -- Required
+            { 'L3MON4D3/LuaSnip' },     -- Required
         },
     },
     'ray-x/go.nvim',
     { 'codota/tabnine-nvim',   build = "./dl_binaries.sh" },
 
-	"jay-babu/mason-nvim-dap.nvim",
+    "jay-babu/mason-nvim-dap.nvim",
     {
         "rcarriga/nvim-dap-ui",
         dependencies = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio" },
@@ -80,7 +84,7 @@ require('lazy').setup({
         },
     },
 
-	--
+    --
     'ojroques/nvim-hardline',
     'mbbill/undotree',
     'tpope/vim-surround',
@@ -90,7 +94,7 @@ require('lazy').setup({
     'Aasim-A/scrollEOF.nvim',
 
     -- preview markdown
-    { 'ellisonleao/glow.nvim', config = function() require("glow").setup() end },
+    -- {"ellisonleao/glow.nvim", config = true, cmd = "Glow"},
 
     -- Theme/visual
     'eandrju/cellular-automaton.nvim',
