@@ -1,5 +1,7 @@
-﻿#NoEnv  ; Recommended for performance and compatibility with future AutoHotkey releases.
+#NoEnv  ; Recommended for performance and compatibility with future AutoHotkey releases.
 ; #Warn  ; Enable warnings to assist with detecting common errors.
+#InstallKeybdHook
+#InstallMouseHook
 SendMode Input  ; Recommended for new scripts due to its superior speed and reliability.
 SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 
@@ -13,13 +15,13 @@ SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
     !2::
     WinActivate
     Return
-#If 
+#If
 
 ; if more than 1 edge open, cycle
 #If WinActive("ahk_exe msedge.exe")
     !2::	; Next Window
     WinGet, A, ID, ahk_exe msedge.exe
-    WinGet, Instances, Count, ahk_exe msedge.exe 
+    WinGet, Instances, Count, ahk_exe msedge.exe
     If Instances > 1
     WinSet, Bottom,, A
     WinActivate, ahk_exe msedge.exe
@@ -47,6 +49,20 @@ SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
     Return
 #If
 
+; if dopus open, focus
+#If WinExist("ahk_exe dopus.exe") && not WinActive("ahk_exe dopus.exe")
+	!4::
+	WinActivate
+	Return
+#If
+
+; if dopus not open, run
+#If not WinExist("ahk_exe dopus.exe")
+	!4::
+	Run "C:\Program Files\GPSoftware\Directory Opus\dopus.exe"
+    Return
+#If
+
 !0:: ; allows keeping script in dotfiles and reload on edit because can't symlink
 send rm -f /mnt/c/scripts/AutoHotkeyU64.ahk
 sleep, 200
@@ -60,3 +76,25 @@ Return
 !`:: ; reload script
 Reload
 Return
+
+; WheelDown::KeyHistory
+; WheelUp::KeyHistory
+; LButton::
+; send, a
+; Return
+
+#If WinActive("ahk_exe PathOfExileSteam.exe")
+    `::
+    send {LButton}
+    ; sleep 20
+    Return
+
+    ^WheelDown::
+    send ^+{LButton}
+    Return
+
+    ^WheelUp::
+    send ^+{LButton}
+    Return
+#If
+
