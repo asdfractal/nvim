@@ -50,7 +50,7 @@ return {
                             },
                             diagnostics = {
                                 globals = { "bit", "vim", "it", "describe", "before_each", "after_each" },
-                                disable = { 'missing-fields' },
+                                disable = { "missing-fields" },
                             },
                             -- You can toggle below to ignore Lua_LS's noisy `missing-fields` warnings
                             workspace = {
@@ -64,7 +64,7 @@ return {
                         },
                     },
                 },
-                tsserver = {},
+                ts_ls = {},
                 bashls = {},
             }
 
@@ -72,7 +72,7 @@ return {
             local ensure_installed = vim.tbl_keys(servers or {})
             vim.list_extend(ensure_installed, {
                 "stylua", -- Used to format Lua code
-                "tsserver",
+                "ts_ls",
                 "lua_ls",
                 "gopls",
                 "goimports",
