@@ -1,12 +1,13 @@
-apt update
-apt upgrade -y
+sudo apt update
+sudo apt upgrade -y
 
 # Install prerequisites
-apt install -y apt-transport-https ca-certificates curl gnupg lsb-release
-install -m 0755 -d /etc/apt/keyrings
+sudo apt install -y apt-transport-https ca-certificates curl gnupg lsb-release
+sudo install -m 0755 -d /etc/apt/keyrings
 
 # Add Docker's official GPG key
-curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
+sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
+sudo chmod a+r /etc/apt/keyrings/docker.asc
 
 # Add the repository to Apt sources:
 echo \
@@ -15,11 +16,11 @@ echo \
   sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
 
 # Install Docker Engine
-apt update
-apt install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+sudo apt update
+sudo apt install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 
 # Add user to docker group
-# if [ ! -n "$(getent group | grep "docker")" ]; then
-#   groupadd docker
-# fi
-# usermod -aG docker "$SUDO_USER"
+if [ ! -n "$(getent group | grep "docker")" ]; then
+  sudo groupadd docker
+fi
+sudo usermod -aG docker "$SUDO_USER"
