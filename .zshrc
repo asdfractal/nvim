@@ -80,3 +80,19 @@ eval "$(atuin init zsh)"
 # https://github.com/junegunn/fzf
 # Fuzzy finder
 source <(fzf --zsh)
+
+if [ -e /home/asdfractal/.nix-profile/etc/profile.d/nix.sh ]; then . /home/asdfractal/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
+eval 
+_direnv_hook() {
+  trap -- '' SIGINT
+  eval "$("/home/linuxbrew/.linuxbrew/Cellar/direnv/2.35.0/bin/direnv" export zsh)"
+  trap - SIGINT
+}
+typeset -ag precmd_functions
+if (( ! ${precmd_functions[(I)_direnv_hook]} )); then
+  precmd_functions=(_direnv_hook $precmd_functions)
+fi
+typeset -ag chpwd_functions
+if (( ! ${chpwd_functions[(I)_direnv_hook]} )); then
+  chpwd_functions=(_direnv_hook $chpwd_functions)
+fi

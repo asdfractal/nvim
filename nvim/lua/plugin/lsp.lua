@@ -31,7 +31,7 @@ return {
                     capabilities = capabilities,
                     settings = {
                         gopls = {
-                            usePlaceholders = true,
+                            usePlaceholders = false,
                             completeUnimported = true,
                             staticcheck = true,
                             semanticTokens = true,
@@ -64,20 +64,20 @@ return {
                         },
                     },
                 },
-                ts_ls = {},
-                bashls = {},
+                -- ts_ls = {},
+                -- bashls = {},
             }
 
             require("mason").setup()
             local ensure_installed = vim.tbl_keys(servers or {})
             vim.list_extend(ensure_installed, {
                 "stylua", -- Used to format Lua code
-                "ts_ls",
+                -- "ts_ls",
                 "lua_ls",
                 "gopls",
                 "goimports",
                 "delve",
-                "bashls",
+                -- "bashls",
                 "shellcheck",
             })
             require("mason-tool-installer").setup({ ensure_installed = ensure_installed })

@@ -14,13 +14,32 @@ return {
     "eandrju/cellular-automaton.nvim",
 
     {
-        "asdfractal/oceanic-next-vim",
+        "NvChad/nvim-colorizer.lua",
+        event = "BufReadPre",
+        opts = { -- set to setup table
+        },
+    },
+
+    {
+        -- "asdfractal/oceanic-next-vim",
         -- "mhartington/oceanic-next",
+        "oceanicnext",
         name = "oceanicnext",
+        dir = "~/projects/oceanic-next-vim/",
         config = function()
             ColorMyPencils()
         end,
     },
 
     { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
+
+    -- {
+    --     "citizensleeper",
+    --     dir = "~/projects/citizensleeper",
+    --     lazy = false,
+    --     priority = 1000,
+    --     config = function()
+    --         vim.cmd.colorscheme("neogotham")
+    --     end,
+    -- },
 }
