@@ -1,6 +1,5 @@
 VIM="nvim"
 export GIT_EDITOR=$VIM
-export DOTFILES=$HOME/.dotfiles
 
 bindkey -s ^f "tmux-sessioniser\n"
 bindkey -s ^e "tmux-sessioniser $HOME/monolith \n"

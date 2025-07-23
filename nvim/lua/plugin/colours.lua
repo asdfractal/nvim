@@ -1,7 +1,7 @@
 function ColorMyPencils()
     vim.g.oceanic_transparent_bg = 0
     -- vim.cmd.colorscheme("catppuccin")
-    vim.cmd.colorscheme("oceanicnext")
+    vim.cmd.colorscheme("OceanicNext")
 
     vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
     vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
@@ -22,16 +22,16 @@ return {
 
     {
         -- "asdfractal/oceanic-next-vim",
-        -- "mhartington/oceanic-next",
-        "oceanicnext",
-        name = "oceanicnext",
-        dir = "~/projects/oceanic-next-vim/",
+        "mhartington/oceanic-next",
+        -- "oceanicnext",
+        -- name = "oceanicnext",
+        --     dir = "~/projects/oceanic-next-vim/",
         config = function()
             ColorMyPencils()
         end,
     },
 
-    { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
+    -- { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
 
     -- {
     --     "citizensleeper",

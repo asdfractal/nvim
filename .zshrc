@@ -31,7 +31,11 @@ export GPG_TTY=$TTY
 export DOTFILES="$HOME/projects/dotfiles"
 export FLYCTL_INSTALL="$HOME/.fly"
 export GOPATH="$HOME/projects/go"
-export BROWSER=wslview
+# export BROWSER=wslview
+export XDG_CONFIG_HOME="$HOME/.config/"
+export XDG_CACHE_HOME="$HOME/.cache/"
+export XDG_DATA_HOME="$HOME/.local/share/"
+export XDG_STATE_HOME="$HOME/.local/state/"
 
 # Path
 export PATH="$HOME/.local/bin":"/usr/local/go/bin":"$HOME/projects/go/bin":"$FLYCTL_INSTALL/bin":$PATH
@@ -70,10 +74,6 @@ bindkey '^[[B' history-substring-search-down # Down key
 
 bindkey '^H' backward-kill-word
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 eval "$(atuin init zsh)"
 
@@ -82,10 +82,10 @@ eval "$(atuin init zsh)"
 source <(fzf --zsh)
 
 if [ -e /home/asdfractal/.nix-profile/etc/profile.d/nix.sh ]; then . /home/asdfractal/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
-eval 
+eval
 _direnv_hook() {
   trap -- '' SIGINT
-  eval "$("/home/linuxbrew/.linuxbrew/Cellar/direnv/2.35.0/bin/direnv" export zsh)"
+  eval "$("/home/linuxbrew/.linuxbrew/bin/direnv" export zsh)"
   trap - SIGINT
 }
 typeset -ag precmd_functions
@@ -96,3 +96,7 @@ typeset -ag chpwd_functions
 if (( ! ${chpwd_functions[(I)_direnv_hook]} )); then
   chpwd_functions=(_direnv_hook $chpwd_functions)
 fi
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

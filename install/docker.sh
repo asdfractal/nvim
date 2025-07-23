@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 sudo apt update
 sudo apt upgrade -y
 
@@ -23,4 +25,4 @@ sudo apt install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin d
 if [ ! -n "$(getent group | grep "docker")" ]; then
   sudo groupadd docker
 fi
-sudo usermod -aG docker "$SUDO_USER"
+sudo usermod -aG docker "$USER"

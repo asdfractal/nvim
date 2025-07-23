@@ -14,7 +14,6 @@ general {
 order += "disk /"
 order += "load"
 order += "tztime local"
-order += "tztime utc"
 
 tztime local {
         format = "%Y-%m-%d %H:%M:%S"
@@ -32,3 +31,4 @@ load {
 disk "/" {
         format = "%avail"
 }
+

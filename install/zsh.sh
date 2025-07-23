@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 # omz
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
 
@@ -7,4 +8,4 @@ git clone https://github.com/zsh-users/zsh-autosuggestions $HOME/.oh-my-zsh/cust
 git clone https://github.com/zsh-users/zsh-history-substring-search $HOME/.oh-my-zsh/custom/plugins/zsh-history-substring-search
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $HOME/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
 
-chsh -s $(which zsh)
+chsh -s "$(which zsh)"

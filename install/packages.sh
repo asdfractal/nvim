@@ -1,14 +1,23 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 packages=(
-  zsh
+  dex
   etckeeper
-  python3-pip
+  feh
+  flameshot
+  i3
+  lua5.1
+  liblua5.1-dev
+  pasystray
+  picom
   postgresql
   postgresql-client
+  python3-pip
+  rofi
+  xinit
+  zsh
+
 )
 
 sudo apt install -y "${packages[@]}"
 
-# nvm
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash

@@ -1,8 +1,8 @@
-#/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-
-brew update
-brew upgrade
+#!/bin/bash
+if [ "$1" == "fresh" ]; then
+    NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+fi
 
 packages=(
   atuin
@@ -12,6 +12,7 @@ packages=(
   btop
   bzip2
   curl
+  direnv
   dust
   fzf
   gcc
@@ -26,6 +27,7 @@ packages=(
   libzip
   neovim
   ripgrep
+  sevenzip
   the_silver_searcher
   tldr
   tmux
