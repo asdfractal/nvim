@@ -6,7 +6,7 @@ set $mod Mod4
 for_window [class="^.*"] border pixel 1
                          # class                 border  backgr. text    indicator child_border
 for_window [class="^.*"] client.focused          #77dd77 #285577 #ffffff #2e9ef4   #285577
-i3
+#i3
 # Startup
 font pango:JetBrainsMono Nerd Font 12
 
@@ -224,4 +224,4 @@ for_window [class="vlc"] floating enable
 bindsym $mod+Ctrl+greater move workspace to output right
 bindsym $mod+Ctrl+less move workspace to output left
 
-bindsym $mod+Ctrl+s exec flameshot gui
+bindsym $mod+Shift+s exec flameshot gui
