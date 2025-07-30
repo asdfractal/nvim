@@ -1,4 +1,15 @@
-#!/usr/bin/env bash
+#!/bin/env bash
+
+paru -S --noconfirm --needed tldr fzf rofi-wayland btop ripgrep jq go tmux
+paru -S --noconfirm neovim lua51 luarocks zsh
+paru -S atuin bat dust git-delta gnu-netcat
+paru -S ttf-font-awesome waybar ttf-jetbrains-mono-nerd ttf-nerd-fonts-symbols
+paru -S ghostty
+paru -S #paru -Syu wlogout-git --noconfirm --needed
+paru -S docker docker-compose docker-buildx
+sudo luarocks install luacheck
+curl -f https://zed.dev/install.sh | sh
+
 # omz
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
 

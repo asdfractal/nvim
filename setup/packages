@@ -1,0 +1,3 @@
+paru -S gtk4 adw-gtk-theme qt5ct qt6ct kvantum kvantum breze-icons
+paru -S spotify-launcher google-chrome discord
+paru -S imagemagick hyprlock hyprshot cliphist --noconfirm --needed
