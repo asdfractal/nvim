@@ -1,21 +1,27 @@
 {
   "layer": "top",
-  "position": "top",
+  "position": "bottom",
+  "height": 30,
+  // "spacing": 2,
   "modules-left": ["hyprland/workspaces"],
-  "modules-center": ["clock"],
+  "modules-center": [],
   "modules-right": [
     "pulseaudio",
     "network",
     "cpu",
     "memory",
     "tray",
-    "custom/lock"
+    "custom/lock",
+    "clock"
   ],
   "hyprland/workspaces": {
-    "format": "{name}: {icon}",
+    "format": "{name} {icon}",
     "format-icons": {
       "active": "",
-      "default": ""
+      "default": ""
+    },
+    "persistent-workspaces": {
+        "DP-2": ["tty"]
     }
   },
   "tray": {
@@ -23,9 +29,20 @@
     "spacing": 10
   },
   "clock": {
-    "timezone": "Australia/Melbourne",
-    "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-    "format": "{:%d - %H:%M}"
+    // "timezone": "Australia/Melbourne",
+    "timezones": [
+        "Australia/Melbourne",
+        "Etc/UTC"
+    ],
+    "tooltip-format": "{tz_list}\n<tt><small>{calendar}</small></tt>",
+    "format": "{:%d/%m/%Y  %H:%M:%S}",
+    "interval": 1,
+    "calendar": {
+        "weeks-pos": "right",
+        "format": {
+            "today": "<span color='#14588D'><b>{}</b></span>"
+        }
+    }
   },
   "network": {
     "format-wifi": "󰤢 ",
@@ -55,7 +72,7 @@
     "tooltip": false,
     "on-click": "sh -c '(sleep 0.5s; hyprlock)' & disown",
     "format": ""
-  },
+  }
 
 }
 
