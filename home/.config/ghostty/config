@@ -24,3 +24,8 @@ keybind = ctrl+enter=unbind
 # keybind = ctrl+a>h=goto_split:left
 # keybind = ctrl+a>l=goto_split:right
 # keybind = ctrl+a>n=new_split:right
+keybind = shift+insert=paste_from_clipboard
+keybind = shift+ctrl+insert=paste_from_selection
+
+# To delete from the current position to the start of the line
+keybind = super+backspace=esc:w

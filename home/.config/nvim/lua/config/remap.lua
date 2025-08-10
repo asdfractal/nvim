@@ -26,6 +26,7 @@ vim.keymap.set({ "n", "v" }, "<leader>d", [["_d]])
 
 vim.keymap.set("i", "<C-c>", "<Esc>")
 vim.keymap.set("n", "Q", "<nop>")
+vim.keymap.set("n", "q", "<nop>")
 vim.keymap.set("n", "C-q", "<nop>")
 vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessioniser<CR>")
 
@@ -44,7 +45,7 @@ vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
 vim.keymap.set("n", "<leader>mr", "<cmd>CellularAutomaton make_it_rain<CR>")
 
 vim.keymap.set("n", "<leader><leader>", function()
-    vim.cmd("so")
+	vim.cmd("so")
 end)
 
 vim.keymap.set("n", "<leader>f", vim.lsp.buf.format)
@@ -60,25 +61,25 @@ vim.keymap.set("n", "<leader>O", "O<esc>")
 -- word nav
 local pattern = [[\v['"({[< ]@<=(\w)|^(\w)|([]'"\>)}]\.)@<=(\w)|(['"])@<=([][(){}.,;])(['"])]]
 vim.keymap.set({ "n", "v" }, "<leader>W", function()
-    vim.fn.search(pattern)
+	vim.fn.search(pattern)
 end)
 vim.keymap.set({ "n", "v" }, "<leader>B", function()
-    --(word) backwards
-    vim.fn.search(pattern, "b")
+	--(word) backwards
+	vim.fn.search(pattern, "b")
 end)
 
 -- Spectre
 vim.keymap.set("n", "<leader>SW", '<cmd>lua require("spectre").toggle()<CR>', {
-    desc = "Toggle Spectre",
+	desc = "Toggle Spectre",
 })
 vim.keymap.set("n", "<leader>sw", '<cmd>lua require("spectre").open_visual({select_word=true})<CR>', {
-    desc = "Search current word",
+	desc = "Search current word",
 })
 vim.keymap.set("v", "<leader>sw", '<esc><cmd>lua require("spectre").open_visual()<CR>', {
-    desc = "Search current word",
+	desc = "Search current word",
 })
 vim.keymap.set("n", "<leader>sp", '<cmd>lua require("spectre").open_file_search({select_word=true})<CR>', {
-    desc = "Search on current file",
+	desc = "Search on current file",
 })
 
 -- Copy absolute/relative path
@@ -93,7 +94,7 @@ vim.keymap.set("n", "<C-k>", ":wincmd k <CR>")
 vim.keymap.set("n", "<C-l>", ":wincmd l <CR>")
 
 vim.keymap.set("n", "<leader><leader>", function()
-    vim.cmd("so")
+	vim.cmd("so")
 end)
 
 -- vim.keymap.set("i", "<C-H>", "<C-W>", { noremap = true })
