@@ -1,0 +1,63 @@
+-- local M = {}
+--
+-- M.setup = function()
+--   local group = vim.api.nvim_create_augroup("custom-treesitter", { clear = true })
+--
+--   require("nvim-treesitter").setup {
+--     ensure_installed = {
+--       -- "core",
+--       -- "stable",
+--       "javascript",
+--       "typescript",
+--       "python",
+--       "lua",
+--       "vim",
+--       "vimdoc",
+--       "query",
+--       "go",
+--       "bash",
+--     },
+--     -- Install parsers synchronously (only applied to `ensure_installed`)
+--     sync_install = false,
+--
+--     -- Automatically install missing parsers when entering buffer
+--     -- Recommendation: set to false if you don't have `tree-sitter` CLI installed locally
+--     auto_install = false,
+--     ignore_install = {},
+--     modules = {},
+--
+--     indent = {
+--       enable = true,
+--     },
+--
+--     highlight = {
+--       enable = true,
+--       -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
+--       -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
+--       -- Using this option may slow down your editor, and you may see some duplicate highlights.
+--       -- Instead of true it can also be a list of languages
+--       additional_vim_regex_highlighting = false,
+--     },
+--   }
+--
+--   vim.api.nvim_create_autocmd("FileType", {
+--     group = group,
+--     callback = function(args)
+--       local bufnr = args.buf
+--       local ok, parser = pcall(vim.treesitter.get_parser, bufnr)
+--       if not ok or not parser then
+--         return
+--       end
+--       pcall(vim.treesitter.start)
+--     end,
+--   })
+--
+--   -- vim.api.nvim_create_autocmd("User", {
+--   -- group = group,
+--   --   pattern = "TSUpdate",
+--   -- })
+-- end
+--
+-- -- M.setup()
+--
+-- return M
