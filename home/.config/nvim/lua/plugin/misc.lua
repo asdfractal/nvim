@@ -7,7 +7,7 @@ return {
 		end,
 	},
 
-	"numToStr/Comment.nvim",
+	-- "numToStr/Comment.nvim",
 	"tpope/vim-surround",
 	{
 		"mistweaverco/kulala.nvim",
@@ -22,5 +22,15 @@ return {
 			global_keymaps_prefix = "<leader>R",
 			kulala_keymaps_prefix = "",
 		},
+	},
+	{
+		"andymass/vim-matchup",
+		init = function()
+			require("match-up").setup({
+				treesitter = {
+					stopline = 500,
+				},
+			})
+		end,
 	},
 }

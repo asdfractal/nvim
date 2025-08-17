@@ -18,8 +18,8 @@ vim.keymap.set("n", "N", "Nzzzv")
 vim.keymap.set("x", "<leader>p", [["_dP]])
 
 -- next greatest remap ever : asbjornHaland
-vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]])
-vim.keymap.set("n", "<leader>Y", [["+Y]])
+vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]]) -- selection
+vim.keymap.set("n", "<leader>Y", [["+Y]]) -- line
 
 -- delete to void
 vim.keymap.set({ "n", "v" }, "<leader>d", [["_d]])
@@ -93,8 +93,7 @@ vim.keymap.set("n", "<C-j>", ":wincmd j <CR>")
 vim.keymap.set("n", "<C-k>", ":wincmd k <CR>")
 vim.keymap.set("n", "<C-l>", ":wincmd l <CR>")
 
-vim.keymap.set("n", "<leader><leader>", function()
-	vim.cmd("so")
-end)
-
 -- vim.keymap.set("i", "<C-H>", "<C-W>", { noremap = true })
+vim.keymap.set("n", "<Leader>tw", function()
+	vim.cmd("set list!")
+end)

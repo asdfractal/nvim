@@ -1,5 +1,4 @@
 return {
-
 	{
 		"folke/lazydev.nvim",
 		ft = "lua",
@@ -8,249 +7,42 @@ return {
 				{ path = "luvit-meta/library", words = { "vim%.uv" } },
 			},
 		},
+		config = function()
+			require("lazydev").setup()
+		end,
 	},
 
 	{ "Bilal2453/luvit-meta", lazy = true },
 
 	{
-		"neovim/nvim-lspconfig",
-		dependencies = {
-			{ "williamboman/mason.nvim", config = true },
-			"williamboman/mason-lspconfig.nvim",
-			"WhoIsSethDaniel/mason-tool-installer.nvim",
-			{ "j-hui/fidget.nvim", opts = {} },
-			"hrsh7th/cmp-nvim-lsp",
-		},
-
+		"folke/trouble.nvim",
 		config = function()
-			local capabilities = vim.lsp.protocol.make_client_capabilities()
-			capabilities = vim.tbl_deep_extend("force", capabilities, require("cmp_nvim_lsp").default_capabilities())
+			require("trouble").setup()
+		end,
+		event = "VeryLazy",
+	},
 
-			local servers = {
-				gopls = {
-					capabilities = capabilities,
-					settings = {
-						gopls = {
-							usePlaceholders = false,
-							completeUnimported = true,
-							staticcheck = true,
-							semanticTokens = true,
-						},
-					},
-				},
-				lua_ls = {
-					-- cmd = {...},
-					-- filetypes = { ...},
-					capabilities = capabilities,
-					settings = {
-						Lua = {
-							runtime = { version = "LuaJIT" },
-							completion = {
-								callSnippet = "Replace",
-							},
-							diagnostics = {
-								globals = { "bit", "vim", "it", "describe", "before_each", "after_each" },
-								disable = { "missing-fields" },
-							},
-							-- You can toggle below to ignore Lua_LS's noisy `missing-fields` warnings
-							workspace = {
-								checkThirdParty = false,
-								-- library = {
-								--     [vim.fn.expand("$VIMRUNTIME/lua")] = true,
-								--     [vim.fn.expand("$VIMRUNTIME/lua/vim/lsp")] = true,
-								-- },
-								library = vim.api.nvim_get_runtime_file("", true),
-							},
-						},
-					},
-				},
-				-- ts_ls = {},
-				-- bashls = {},
-			}
-
+	{
+		"williamboman/mason-lspconfig.nvim",
+		config = function()
 			require("mason").setup()
-			local ensure_installed = vim.tbl_keys(servers or {})
-			vim.list_extend(ensure_installed, {
-				"stylua", -- Used to format Lua code
-				-- "ts_ls",
-				"lua_ls",
-				"gopls",
-				"goimports",
-				-- "delve",
-				-- "bashls",
-				"shellcheck",
-			})
-			require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
-			require("mason-lspconfig").setup({
-				handlers = {
-					function(server_name)
-						local server = servers[server_name] or {}
-						require("lspconfig")[server_name].setup(server)
-					end,
-				},
-			})
-
-			vim.diagnostic.config({
-				float = {
-					border = "rounded",
-					source = true,
-					header = "",
-					prefix = "",
-				},
-			})
+			require("mason-lspconfig").setup()
+			require("config.lsp-config")
 		end,
-	},
-
-	{
-		"hrsh7th/nvim-cmp",
-		event = "InsertEnter",
 		dependencies = {
-			{
-				"L3MON4D3/LuaSnip",
-				version = "v2.*", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
-				-- install jsregexp (optional!).
-				build = "make install_jsregexp",
-
-				dependencies = { "rafamadriz/friendly-snippets" },
-
-				config = function()
-					local ls = require("luasnip")
-					ls.filetype_extend("javascript", { "jsdoc" })
-
-					--- TODO: What is expand?
-					vim.keymap.set({ "i" }, "<C-s>e", function()
-						ls.expand()
-					end, { silent = true })
-
-					vim.keymap.set({ "i", "s" }, "<C-s>;", function()
-						ls.jump(1)
-					end, { silent = true })
-					vim.keymap.set({ "i", "s" }, "<C-s>,", function()
-						ls.jump(-1)
-					end, { silent = true })
-
-					vim.keymap.set({ "i", "s" }, "<C-E>", function()
-						if ls.choice_active() then
-							ls.change_choice(1)
-						end
-					end, { silent = true })
-				end,
-			},
-			"saadparwaiz1/cmp_luasnip",
-			"hrsh7th/cmp-nvim-lsp",
-			"hrsh7th/cmp-path",
-			"hrsh7th/cmp-cmdline",
-			-- "hrsh7th/cmp-buffer",
+			"neovim/nvim-lspconfig",
+			"williamboman/mason.nvim",
+			"WhoIsSethDaniel/mason-tool-installer.nvim",
 		},
-		config = function()
-			local cmp = require("cmp")
-			local luasnip = require("luasnip")
-			luasnip.config.setup({})
-
-			cmp.setup({
-				window = {
-					completion = cmp.config.window.bordered(),
-					documentation = cmp.config.window.bordered(),
-				},
-				snippet = {
-					expand = function(args)
-						luasnip.lsp_expand(args.body) -- For `luasnip` users.
-					end,
-				},
-				mapping = cmp.mapping.preset.insert({
-					["<C-n>"] = cmp.mapping.select_next_item(),
-					["<C-p>"] = cmp.mapping.select_prev_item(),
-					-- Scroll the documentation window [b]ack / [f]orward
-					["<C-b>"] = cmp.mapping.scroll_docs(-4),
-					["<C-f>"] = cmp.mapping.scroll_docs(4),
-
-					["<Tab>"] = cmp.mapping.confirm({ select = true }),
-					["<C-Space>"] = cmp.mapping.complete({}),
-					-- ['<C-f>'] = cmp_action.luasnip_jump_forward(),
-					-- ['<C-b>'] = cmp_action.luasnip_jump_backward(),
-					-- ['<C-u>'] = cmp.mapping.scroll_docs(-4),
-					-- ['<C-d>'] = cmp.mapping.scroll_docs(4),
-				}),
-				sources = {
-					{
-						name = "lazydev",
-						-- set group index to 0 to skip loading LuaLS completions as lazydev recommends it
-						group_index = 0,
-					},
-					{ name = "nvim_lsp" },
-					{ name = "luasnip" },
-					{ name = "nvim_lua" },
-					{ name = "path" },
-				},
-			})
-			cmp.setup.cmdline("/", {
-				mapping = cmp.mapping.preset.cmdline(),
-				sources = {
-					{ name = "buffer" },
-				},
-			})
-			cmp.setup.cmdline(":", {
-				mapping = cmp.mapping.preset.cmdline(),
-				sources = cmp.config.sources({
-					{ name = "path" },
-				}, {
-					{
-						name = "cmdline",
-						option = {
-							ignore_cmds = { "Man", "!" },
-						},
-					},
-				}),
-			})
-		end,
+		-- event = "BufReadPre",
 	},
 
 	{
-		"stevearc/conform.nvim",
-		-- event = { 'BufWritePre' },
-		-- cmd = { 'ConformInfo' },
-		-- keys = {
-		-- 	{
-		-- 		'<leader>f',
-		-- 		function()
-		-- 			require('conform').format { async = true, lsp_fallback = true }
-		-- 		end,
-		-- 		mode = '',
-		-- 		desc = '[F]ormat buffer',
-		-- 	},
-		-- },
-		opts = {
-			notify_on_error = false,
-			format_on_save = function(bufnr)
-				local disable_filetypes = { c = true, cpp = true }
-				return {
-					timeout_ms = 500,
-					lsp_fallback = not disable_filetypes[vim.bo[bufnr].filetype],
-				}
-			end,
-			formatters_by_ft = {
-				lua = { "stylua" },
-				-- Conform can also run multiple formatters sequentially
-				-- python = { "isort", "black" },
-				--
-				-- You can use 'stop_after_first' to run the first available formatter from the list
-				-- javascript = { "prettierd", "prettier", stop_after_first = true },
-				go = { "goimports" },
-				templ = {
-					"templ",
-					"goimports",
-					"injected",
-				},
-			},
-		},
+		"j-hui/fidget.nvim",
+		opts = {},
+		event = "BufReadPre",
+		config = function()
+			require("fidget").setup({})
+		end,
 	},
-
-	-- {
-	--     "olexsmir/gopher.nvim",
-	--     ft = "go",
-	--     build = ":GoInstallDeps",
-	--     config = function()
-	--         require("gopher").setup()
-	--     end,
-	-- },
 }

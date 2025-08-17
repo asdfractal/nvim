@@ -1,7 +1,10 @@
 local opt = vim.opt
 
-opt.nu = true
+-- opt.guicursor = ""
+
+opt.number = true
 opt.relativenumber = true
+opt.winborder = "rounded"
 
 opt.tabstop = 4
 opt.softtabstop = 4
@@ -29,15 +32,15 @@ opt.updatetime = 50
 opt.colorcolumn = ""
 
 opt.listchars = {
-    eol = "↲",
-    tab = "» ",
-    trail = "␣",
-    extends = "…",
-    precedes = "…",
-    conceal = "┊",
-    nbsp = "☠",
+	eol = "↲",
+	tab = "» ",
+	trail = "␣",
+	extends = "…",
+	precedes = "…",
+	conceal = "┊",
+	nbsp = "☠",
 }
-opt.list = true
+opt.list = false
 
 opt.smartcase = true
 opt.ignorecase = true
@@ -47,3 +50,14 @@ opt.splitbelow = true
 opt.splitright = true
 
 opt.formatoptions:remove("o")
+
+opt.wrap = true
+opt.linebreak = true
+
+local get_option = vim.filetype.get_option
+vim.filetype.get_option = function(filetype, option)
+	return option == "commentstring" and require("ts_context_commentstring.internal").calculate_commentstring()
+		or get_option(filetype, option)
+end
+
+opt.wildmenu = true
