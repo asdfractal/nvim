@@ -11,6 +11,8 @@ local setup = function()
         "goimports",
         "injected",
       },
+      javascript = { "prettier" },
+      typescript = { "prettier" },
     },
   }
 

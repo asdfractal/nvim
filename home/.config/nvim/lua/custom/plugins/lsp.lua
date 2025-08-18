@@ -64,6 +64,10 @@ return {
         gopls = {
           settings = {
             gopls = {
+              usePlaceholders = false,
+              completeUnimported = true,
+              staticcheck = true,
+              semanticTokens = true,
               hints = {
                 assignVariableTypes = true,
                 compositeLiteralFields = true,

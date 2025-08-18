@@ -5,8 +5,10 @@ return {
     require("lualine").setup {
       options = {
         icons_enabled = true,
-        theme = require "lualine.themes.dracula",
-        component_separators = { left = "\\", right = "/" },
+        theme = require "lualine.themes.tomorrow_night",
+        -- theme = require "lualine.themes.dracula",
+        -- component_separators = { left = "\\", right = "/" },
+        component_separators = { left = "", right = "" },
         section_separators = { left = "", right = "" },
         disabled_filetypes = {
           statusline = {},
