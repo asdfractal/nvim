@@ -13,7 +13,6 @@ local kind_formatter = lspkind.cmp_format {
     path = "[path]",
     luasnip = "[snip]",
     gh_issues = "[issues]",
-    tn = "[TabNine]",
   },
 }
 
@@ -48,7 +47,7 @@ cmp.setup {
     ["<C-b>"] = cmp.mapping.scroll_docs(-4),
     ["<C-f>"] = cmp.mapping.scroll_docs(4),
 
-    ["<Tab>"] = cmp.mapping.confirm { select = true },
+    -- ["<Tab>"] = cmp.mapping.confirm { select = true },
     ["<C-l>"] = cmp.mapping.confirm { select = false },
     ["<C-Space>"] = cmp.mapping.complete {},
     -- ["<C-y>"] = cmp.config.disable, -- Specify `cmp.onfig.disable` if you want to remove the default `<C-y>` mapping.
@@ -56,12 +55,20 @@ cmp.setup {
       i = cmp.mapping.abort(),
       c = cmp.mapping.close(),
     },
+    ["<Tab>"] = cmp.mapping.select_next_item(),
+    ["<S-Tab>"] = cmp.mapping.select_prev_item(),
+    ["<CR>"] = cmp.mapping.confirm { select = true },
   },
 
   -- Enable luasnip to handle snippet expansion for nvim-cmp
+  -- snippet = {
+  --   expand = function(args)
+  --     vim.snippet.expand(args.body)
+  --   end,
+  -- },
   snippet = {
     expand = function(args)
-      vim.snippet.expand(args.body)
+      require("luasnip").lsp_expand(args.body)
     end,
   },
 
@@ -93,11 +100,8 @@ cmp.setup {
     },
   },
   window = {
-    -- TODO: I don't like this at all for completion window, it takes up way too much space.
-    --  However, I think the docs one could be OK, but I need to fix the highlights for it
-    --
-    -- completion = cmp.config.window.bordered(),
-    -- documentation = cmp.config.window.bordered(),
+    completion = cmp.config.window.bordered(),
+    documentation = cmp.config.window.bordered(),
   },
 }
 

@@ -29,7 +29,6 @@ return {
       "b0o/SchemaStore.nvim",
     },
     config = function()
-
       local extend = function(name, key, values)
         local mod = require(string.format("lspconfig.configs.%s", name))
         local default = mod.default_config
@@ -121,7 +120,6 @@ return {
 
           filetypes = { "c" },
         },
-
       }
 
       local servers_to_install = vim.tbl_filter(function(key)
@@ -213,7 +211,6 @@ return {
           vim.diagnostic.config { virtual_text = true, virtual_lines = false }
         end
       end, { desc = "Toggle lsp_lines" })
-
     end,
   },
 }

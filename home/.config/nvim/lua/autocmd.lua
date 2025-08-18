@@ -30,14 +30,10 @@ autocmd("LspAttach", {
     vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, opts)
     vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
     -- vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
+    vim.keymap.set("n", "<leader>K", vim.lsp.buf.signature_help, opts)
     vim.keymap.set("n", "<leader>vws", vim.lsp.buf.workspace_symbol, opts)
     vim.keymap.set("n", "<leader>vd", vim.diagnostic.open_float, opts)
     vim.keymap.set("n", "<leader>ve", vim.diagnostic.setqflist, opts)
-    -- vim.keymap.set("n", "[d", vim.diagnostic.jump{ count = 1, float = true }, opts)
-    -- vim.keymap.set("n", "]d", vim.diagnostic.jump, opts)
-    -- vim.keymap.set("n", "<leader>K", vim.lsp.buf.signature_help, opts)
-    -- vim.keymap.set("n", "[d", vim.diagnostic.goto_next, opts)
-    -- vim.keymap.set("n", "]d", vim.diagnostic.goto_prev, opts)
 
     -- autocmd("BufWritePre", {
     -- 	buffer = e.buf,
