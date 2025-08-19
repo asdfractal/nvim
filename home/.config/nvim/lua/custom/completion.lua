@@ -34,29 +34,27 @@ cmp.setup {
   mapping = {
     ["<C-n>"] = cmp.mapping.select_next_item { behavior = cmp.SelectBehavior.Insert },
     ["<C-p>"] = cmp.mapping.select_prev_item { behavior = cmp.SelectBehavior.Insert },
-    ["<C-y>"] = cmp.mapping(
-      cmp.mapping.confirm {
-        behavior = cmp.ConfirmBehavior.Insert,
-        select = true,
-      },
-      { "i", "c" }
-    ),
+    -- ["<C-y>"] = cmp.mapping(
+    --   cmp.mapping.confirm {
+    --     behavior = cmp.ConfirmBehavior.Insert,
+    --     select = true,
+    --   },
+    --   { "i", "c" }
+    -- ),
     -- ["<C-n>"] = cmp.mapping.select_next_item(),
     -- ["<C-p>"] = cmp.mapping.select_prev_item(),
     -- Scroll the documentation window [b]ack / [f]orward
     ["<C-b>"] = cmp.mapping.scroll_docs(-4),
     ["<C-f>"] = cmp.mapping.scroll_docs(4),
 
-    -- ["<Tab>"] = cmp.mapping.confirm { select = true },
+    ["<Tab>"] = cmp.mapping.confirm { select = true },
     ["<C-l>"] = cmp.mapping.confirm { select = false },
     ["<C-Space>"] = cmp.mapping.complete {},
-    -- ["<C-y>"] = cmp.config.disable, -- Specify `cmp.onfig.disable` if you want to remove the default `<C-y>` mapping.
-    ["<C-e>"] = cmp.mapping {
-      i = cmp.mapping.abort(),
-      c = cmp.mapping.close(),
-    },
-    ["<Tab>"] = cmp.mapping.select_next_item(),
-    ["<S-Tab>"] = cmp.mapping.select_prev_item(),
+    ["<C-y>"] = cmp.config.disable, -- Specify `cmp.onfig.disable` if you want to remove the default `<C-y>` mapping.
+    -- ["<C-e>"] = cmp.mapping {
+    --   i = cmp.mapping.abort(),
+    --   c = cmp.mapping.close(),
+    -- },
     ["<CR>"] = cmp.mapping.confirm { select = true },
   },
 

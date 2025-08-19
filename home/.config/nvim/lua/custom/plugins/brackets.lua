@@ -49,29 +49,67 @@ return {
   },
 
   -- "numToStr/Comment.nvim",
-  "tpope/vim-surround",
+  -- "tpope/vim-surround",
   {
-    "mistweaverco/kulala.nvim",
-    keys = {
-      { "<leader>Rs", desc = "Send request" },
-      { "<leader>Ra", desc = "Send all requests" },
-      { "<leader>rb", desc = "Open scratchpad" },
-    },
-    ft = { "http", "rest" },
-    opts = {
-      global_keymaps = false,
-      global_keymaps_prefix = "<leader>R",
-      kulala_keymaps_prefix = "",
-    },
-  },
-  {
-    "andymass/vim-matchup",
-    init = function()
-      require("match-up").setup {
-        treesitter = {
-          stopline = 500,
+    "shellRaining/hlchunk.nvim",
+    event = { "BufReadPre", "BufNewFile" },
+    config = function()
+      require("hlchunk").setup {
+        indent = {
+          enable = true,
+          style = "#15151e",
+        },
+        blank = {
+          enable = false,
+        },
+        line_num = {
+          enable = true,
+          style = "#d279d2",
+          use_treesitter = true,
+        },
+        chunk = {
+          enable = false,
+          use_treesitter = true,
+          delay = 0,
+          chars = {
+            horizontal_line = "─",
+            vertical_line = "│",
+            left_top = "╭",
+            left_bottom = "╰",
+            right_arrow = ">",
+          },
+          style = "#806d9c",
         },
       }
     end,
   },
+
+  -- {
+  --   "andymass/vim-matchup",
+  --   init = function()
+  --     require("match-up").setup {
+  --       treesitter = {
+  --         stopline = 500,
+  --       },
+  --     }
+  --   end,
+  -- },
+
+  -- {
+  --   "chrisgrieser/nvim-spider",
+  --   init = function()
+  --     vim.keymap.set({ "n", "o", "x" }, "w", function()
+  --       require("spider").motion "w"
+  --     end, { desc = "Spider-w" })
+  --     vim.keymap.set({ "n", "o", "x" }, "e", function()
+  --       require("spider").motion "e"
+  --     end, { desc = "Spider-e" })
+  --     vim.keymap.set({ "n", "o", "x" }, "b", function()
+  --       require("spider").motion "b"
+  --     end, { desc = "Spider-b" })
+  --     vim.keymap.set({ "n", "o", "x" }, "ge", function()
+  --       require("spider").motion "ge"
+  --     end, { desc = "Spider-ge" })
+  --   end,
+  -- },
 }

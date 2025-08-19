@@ -62,23 +62,21 @@ return {
       local servers = {
         bashls = true,
         gopls = {
-          settings = {
-            gopls = {
-              usePlaceholders = false,
-              completeUnimported = true,
-              staticcheck = true,
-              semanticTokens = true,
-              hints = {
-                assignVariableTypes = true,
-                compositeLiteralFields = true,
-                compositeLiteralTypes = true,
-                constantValues = true,
-                functionTypeParameters = true,
-                parameterNames = true,
-                rangeVariableTypes = true,
-              },
-            },
-          },
+          -- settings = {
+          --   usePlaceholders = false,
+          --   completeUnimported = true,
+          --   staticcheck = true,
+          --   semanticTokens = true,
+          --   hints = {
+          --     assignVariableTypes = true,
+          --     compositeLiteralFields = true,
+          --     compositeLiteralTypes = true,
+          --     constantValues = true,
+          --     functionTypeParameters = true,
+          --     parameterNames = true,
+          --     rangeVariableTypes = true,
+          --   },
+          -- },
         },
         lua_ls = {
           -- server_capabilities = {
@@ -124,6 +122,10 @@ return {
 
           filetypes = { "c" },
         },
+
+        ts_ls = {
+          filetypes = { "typescript", "typescriptreact", "javascript", "javascriptreact" },
+        },
       }
 
       local servers_to_install = vim.tbl_filter(function(key)
@@ -140,6 +142,7 @@ return {
         "stylua",
         "lua_ls",
         "gopls",
+        "ts_ls",
       }
 
       vim.list_extend(ensure_installed, servers_to_install)

@@ -49,6 +49,7 @@ autocmd("LspAttach", {
         vim.cmd "TSContext disable"
       end
     end
+
     if client and client:supports_method(vim.lsp.protocol.Methods.textDocument_documentHighlight) then
       autocmd({ "CursorHold", "CursorHoldI" }, {
         buffer = e.buf,
