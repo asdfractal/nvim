@@ -45,28 +45,6 @@ alias gcp="git cherry-pick"
 
 alias lg="lazygit"
 
-# Pipenv
-alias pi="pipenv install"
-alias psh="pipenv shell"
-alias pv="pipenv"
-
-# Django
-alias pmn="python manage.py"
-alias prs="python manage.py runserver"
-alias pmm="python manage.py makemigrations"
-alias pmmd="python manage.py makemigrations --dry-run"
-alias pmig="python manage.py migrate"
-alias pmigp="python manage.py migrate --plan"
-
-# Other
-# alias ins="sudo apt install"
-# alias remove="sudo apt remove --purge"
-# alias upd="sudo apt update"
-# alias upg="sudo apt upgrade"
-# alias upgl="sudo apt list --upgradeable"
-# alias del='rm -rf'
-# alias ipy="ipython"
-# alias py="/usr/local/bin/python3.11"
 alias dc="docker compose"
 
 #AWSume alias to source the AWSume script
@@ -105,3 +83,6 @@ alias path="echo -e '${PATH//:/\\n}'"
 # Enable aliases to be sudo’ed
 alias sudo="sudo "
 alias sudo='nocorrect sudo'
+
+# hypr
+alias hctl="hyprctl"
