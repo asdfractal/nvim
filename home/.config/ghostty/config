@@ -6,7 +6,7 @@ app-notifications = no-clipboard-copy
 
 theme = Oceanic-Next
 background = 000000
-background-opacity = 0.55
+background-opacity = 0.70
 background-blur = false
 confirm-close-surface=false
 

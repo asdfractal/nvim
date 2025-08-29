@@ -72,5 +72,3 @@ source /usr/share/nvm/init-nvm.sh
 
 # opencode
 export PATH=/home/asdfractal/.opencode/bin:$PATH
-
-source setenv
