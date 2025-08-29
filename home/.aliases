@@ -7,11 +7,8 @@ alias ~="cd ~"
 alias -- -="cd -"
 
 # Shortcuts
-alias p="cd ~/projects"
-alias pw="cd /projects"
 alias lbin="cd ~/.local/bin"
 alias pg="cd $GOPATH/src/github.com/asdfractal"
-alias dot="cd $DOTFILES"
 alias dl="cd ~/Downloads"
 
 alias zshconf="nvim $DOTFILES/.zshrc"
