@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+export DIR=$(pwd)
+
+sudo pacman -Syu
+
+$DIR/setup/packages.dev
+$DIR/setup/packages
+$DIR/setup/symlink

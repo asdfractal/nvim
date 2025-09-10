@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+ln -snf $DIR/home/.config/* $HOME/.config/
+ln -snf $DIR/home/.local/scripts $HOME/.local/scripts
+ln -snf $DIR/home/zfunctions $HOME/.zfunctions
+ln -sf $DIR/home/.p10k.zsh $HOME/.p10k.zsh
+ln -sf $DIR/home/.zshrc $HOME/.zshrc
+ln -sf $DIR/home/.zprofile $HOME/.zprofile
+ln -sf $DIR/home/.aliases $HOME/.aliases
