@@ -1,52 +1,58 @@
 return {
   {
     "nvim-treesitter/nvim-treesitter",
-    branch = "master",
+    branch = "main",
     lazy = false,
     build = ":TSUpdate",
-    config = function()
-      -- TODO: main branch
-      -- require("nvim-treesitter").install({
-      -- 	"go",
-      --              "lua",
-      --              "bash",
-      -- })
-      require("nvim-treesitter.configs").setup {
-        -- A list of parser names, or "all" (the five listed parsers should always be installed)
-        ensure_installed = {
-          "javascript",
-          "typescript",
-          "python",
-          "lua",
-          "vim",
-          "vimdoc",
-          "query",
-          "go",
-          "bash",
-        },
+    -- cmd = { "TSUpdate", "TSInstall", "TSLog", "TSUninstall" },
+    opts_extend = { "ensure_installed" },
+    opts = {
+      -- LazyVim config for treesitter
+      ensure_installed = {
+        "bash",
+        "c",
+        "diff",
+        "go",
+        "html",
+        "javascript",
+        "jsdoc",
+        "json",
+        "jsonc",
+        "lua",
+        "luadoc",
+        "luap",
+        "markdown",
+        "markdown_inline",
+        "printf",
+        "python",
+        "query",
+        "regex",
+        "toml",
+        "tsx",
+        "typescript",
+        "vim",
+        "vimdoc",
+        "xml",
+        "yaml",
+      },
+    },
+    config = function(_, opts)
+      local TS = require "nvim-treesitter"
+      TS.setup(opts)
+      local install = vim.tbl_filter(function(lang)
+        return vim.treesitter.language.get_lang(lang) ~= nil
+      end, opts.ensure_installed or {})
+      if #install > 0 then
+        TS.install(install, { summary = true })
+      end
 
-        -- Install parsers synchronously (only applied to `ensure_installed`)
-        sync_install = false,
-
-        -- Automatically install missing parsers when entering buffer
-        -- Recommendation: set to false if you don't have `tree-sitter` CLI installed locally
-        auto_install = false,
-        ignore_install = {},
-        modules = {},
-
-        indent = {
-          enable = true,
-        },
-
-        highlight = {
-          enable = true,
-          -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
-          -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
-          -- Using this option may slow down your editor, and you may see some duplicate highlights.
-          -- Instead of true it can also be a list of languages
-          additional_vim_regex_highlighting = false,
-        },
-      }
+      vim.api.nvim_create_autocmd("FileType", {
+        callback = function(ev)
+          if vim.treesitter.language.get_lang(ev.match) ~= nil then
+            pcall(vim.treesitter.start)
+          end
+        end,
+      })
     end,
   },
 

@@ -29,28 +29,28 @@ return {
       "b0o/SchemaStore.nvim",
     },
     config = function()
-      local extend = function(name, key, values)
-        local mod = require(string.format("lspconfig.configs.%s", name))
-        local default = mod.default_config
-        local keys = vim.split(key, ".", { plain = true })
-        while #keys > 0 do
-          local item = table.remove(keys, 1)
-          default = default[item]
-        end
-
-        if vim.islist(default) then
-          for _, value in ipairs(default) do
-            table.insert(values, value)
-          end
-        else
-          for item, value in pairs(default) do
-            if not vim.tbl_contains(values, item) then
-              values[item] = value
-            end
-          end
-        end
-        return values
-      end
+      -- local extend = function(name, key, values)
+      --   local mod = require(string.format("lspconfig.configs.%s", name))
+      --   local default = mod.default_config
+      --   local keys = vim.split(key, ".", { plain = true })
+      --   while #keys > 0 do
+      --     local item = table.remove(keys, 1)
+      --     default = default[item]
+      --   end
+      --
+      --   if vim.islist(default) then
+      --     for _, value in ipairs(default) do
+      --       table.insert(values, value)
+      --     end
+      --   else
+      --     for item, value in pairs(default) do
+      --       if not vim.tbl_contains(values, item) then
+      --         values[item] = value
+      --       end
+      --     end
+      --   end
+      --   return values
+      -- end
 
       local capabilities = nil
       if pcall(require, "cmp_nvim_lsp") then
@@ -156,7 +156,9 @@ return {
           capabilities = capabilities,
         }, config)
 
-        lspconfig[name].setup(config)
+        -- lspconfig[name].setup(config)
+        vim.lsp.config(name, config)
+        vim.lsp.enable { name }
       end
 
       local disable_semantic_tokens = {
