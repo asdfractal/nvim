@@ -142,6 +142,7 @@ return {
         "stylua",
         "lua_ls",
         "gopls",
+        "goimports",
         "ts_ls",
       }
 
